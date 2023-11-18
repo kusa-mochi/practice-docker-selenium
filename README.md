@@ -1,5 +1,16 @@
 # practice-docker-selenium
 
+## how to run E2E test sample
+
+### install python environments to Docker host
+
+```
+sudo apt update
+sudo apt install pip
+pip install selenium==4.14.0
+pip install chromedriver-binary-auto    # you may specify a version of the chromedriver, not using "auto"
+```
+
 ## 参考サイト
 
 - [docker-selenium/GitHub](https://github.com/SeleniumHQ/docker-selenium#debugging)
