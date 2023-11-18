@@ -9,7 +9,7 @@ docker compose up
 
 Then do the following:
 
-1. access to localhost:5900 using VNC client.
+1. access to localhost:5900 using VNC client. (ex. Remmina, RealVNC)
 1. attach shell to the selenium-hub container.
 1. run the following command.
 
