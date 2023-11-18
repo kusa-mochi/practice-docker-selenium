@@ -1,19 +1,41 @@
 version: '3.8'
 services:
-  chrome-tester:
-    image: selenium/standalone-chrome:119.0.6045.123
+  selenium-hub:
+    image: selenium/hub:4.14
+    networks:
+      - grid
     ports:
+      - 4442:4442
+      - 4443:4443
       - 4444:4444
       - 7900:7900
-    shm_size: '2g'
     tty: true
-  # python-selenium:
-  #   image: whoatemyapplepie/python-selenium:0.1.0
-  #   build:
-  #     context: ./script_runner_chrome
-  #   volumes:
-  #     - ./:/app
-  #   tty: true
-  #   # environment:
-  #   #   - HUB_HOST=selenium-hub
-  #   #   - BROWSER_NAME=chrome
+  selenium-node:
+    image: selenium/node-chrome:114.0.5735.106
+    networks:
+      - grid
+    ports:
+      - 5900:5900
+    shm_size: '2g'
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    tty: true
+  script-runner:
+    image: whoatemyapplepie/python-selenium:0.1.0
+    build:
+      context: ./script_runner_chrome
+    volumes:
+      - ./:/app
+    networks:
+      - grid
+    tty: true
+    working_dir: /app
+networks:
+  grid:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24

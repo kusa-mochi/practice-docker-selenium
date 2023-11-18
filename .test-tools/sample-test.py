@@ -35,7 +35,7 @@ import time
 #     print(driver.current_url)
 #     driver.save_screenshot(os.path.join(CURRENT_DIR_PATH, BROWSER_FILE_PATH + "test.png"))
 
-command_executor = f'http://localhost:4444/wd/hub'
+command_executor = f'http://selenium-hub:4444/wd/hub'
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certficate-errors')
