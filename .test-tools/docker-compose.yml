@@ -1,20 +1,19 @@
 version: '3.8'
 services:
   chrome-tester:
-    image: selenium/standalone-chrome:119.0-20231102
+    image: selenium/standalone-chrome:119.0.6045.123
     ports:
       - 4444:4444
-      - 5900:5900
       - 7900:7900
     shm_size: '2g'
     tty: true
-  python-selenium:
-    image: whoatemyapplepie/python-selenium:0.1.0
-    build:
-      context: ./script_runner_chrome
-    volumes:
-      - ./:/app
-    tty: true
-    environment:
-      - HUB_HOST=selenium-hub
-      - BROWSER_NAME=chrome
+  # python-selenium:
+  #   image: whoatemyapplepie/python-selenium:0.1.0
+  #   build:
+  #     context: ./script_runner_chrome
+  #   volumes:
+  #     - ./:/app
+  #   tty: true
+  #   # environment:
+  #   #   - HUB_HOST=selenium-hub
+  #   #   - BROWSER_NAME=chrome
