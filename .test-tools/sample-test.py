@@ -40,16 +40,14 @@ options = webdriver.ChromeOptions()
 options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certficate-errors')
 print(command_executor)
-driver = webdriver.Remote(
+with webdriver.Remote(
     command_executor=command_executor,
-    options=options
-)
-driver.maximize_window()
-time.sleep(10)
-driver.get("https://www.ecomott.co.jp/")
-print(driver.current_url)
-# driver.save_screenshot(os.path.join)
-time.sleep(10)
-driver.close()
-driver.quit()
-print('test completed!')
+    options=options,
+) as driver:
+    driver.maximize_window()
+    time.sleep(5)
+    driver.get("https://www.ecomott.co.jp/")
+    print(driver.current_url)
+    # driver.save_screenshot(os.path.join)
+    time.sleep(10)
+    print('test completed!')
