@@ -2,16 +2,23 @@
 
 ## how to run E2E test sample
 
-### install python environments to Docker host
-
-```
-sudo apt update
-sudo apt install pip
-pip install selenium==4.14.0
-pip install chromedriver-binary-auto    # you may specify a version of the chromedriver, not using "auto"
+```bash
+cd .test-tools
+docker compose up
 ```
 
-## 参考サイト
+Then do the following:
+
+1. access to localhost:5900 using VNC client.
+1. attach shell to the selenium-hub container.
+1. run the following command.
+
+```bash
+cd /app
+python sample-test.py
+```
+
+## references
 
 - [docker-selenium/GitHub](https://github.com/SeleniumHQ/docker-selenium#debugging)
 - [noVNC/GitHub](https://github.com/novnc/noVNC)
