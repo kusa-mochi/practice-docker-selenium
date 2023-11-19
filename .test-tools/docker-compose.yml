@@ -8,7 +8,6 @@ services:
       - 4442:4442
       - 4443:4443
       - 4444:4444
-      - 7900:7900
     tty: true
   selenium-node:
     image: selenium/node-chrome:114.0.5735.106
@@ -16,11 +15,13 @@ services:
       - grid
     ports:
       - 5900:5900
+      - 7900:7900
     shm_size: '2g'
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NO_VNC_PORT=7900
     tty: true
   script-runner:
     image: whoatemyapplepie/python-selenium:0.1.0
