@@ -30,6 +30,8 @@ services:
       - ./:/app
     networks:
       - grid
+    environment:
+      - BROWSER_NAME=${BROWSER_NAME}
     tty: true
     working_dir: /app
 networks:
